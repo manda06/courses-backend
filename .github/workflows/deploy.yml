@@ -24,7 +24,7 @@ jobs:
           SOURCE: "deploy/"
           REMOTE_HOST: "project2.eaglesoftwareteam.com"
           REMOTE_USER: ubuntu
-          TARGET: "nodeapps/project2/2022/t5"
+          TARGET: "nodeapps/2023/project2/t5"
       - name: Execute SSH commmands on remote server
         uses: JimCronqvist/action-ssh@master
         env:
@@ -34,9 +34,9 @@ jobs:
           privateKey: ${{ secrets.SERVER_SSH_KEY }}
           debug: false
           command: |
-            cd nodeapps/project2/2021/t5
+            cd nodeapps/2023/project2/t5
             npm install
             sudo systemctl stop course-backend
-            sudo cp course-backend.service /lib/systemd/system/course-backend-t5.service
+            sudo cp course-backend.service /lib/systemd/system/course-t5-backend.service
             sudo systemctl daemon-reload
-            sudo systemctl start course-backend-t5
+            sudo systemctl start course-t5-backend
