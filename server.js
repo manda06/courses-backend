@@ -27,8 +27,10 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to bezkoder application." });
 });
 
+require("./app/routes/course.routes")(app);
+
 // set port, listen for requests
-const PORT = process.env.PORT || 3005;
+const PORT = process.env.PORT || 3015;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
