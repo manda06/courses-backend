@@ -28,7 +28,7 @@ app.get("/", (req, res) => {
 });
 
 
-require("./app/routes/course.routes")(app);
+require("./app/routes/course.routes.js")(app);
 
 
 // set port, listen for requests
