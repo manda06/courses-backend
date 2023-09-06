@@ -15,7 +15,7 @@ exports.create = (req, res) => {
     title: req.body.title,
     description: req.body.description,
     published: req.body.published ? req.body.published : false,
-    userId: req.body.userId,
+    //userId: req.body.userId,
   };
   // Save Course in the database
   course.create(course)
@@ -46,7 +46,7 @@ exports.findAll = (req, res) => {
 };
 
 // Find a single Course with an id
-exports.findAllForUser = (req, res) => {
+/*exports.findAllForUser = (req, res) => {
   const userId = req.params.userId;
   course.findAll({ where: { userId: userId } })
     .then((data) => {
@@ -65,7 +65,7 @@ exports.findAllForUser = (req, res) => {
           "Error retrieving Courses for user with id=" + userId,
       });
     });
-};
+};*/
 // Find a single Course with an id
 exports.findOne = (req, res) => {
   const id = req.params.id;
