@@ -14,7 +14,7 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.tutorial = require("./course.model.js")(sequelize, Sequelize);
+db.courses = require("./course.model.js")(sequelize, Sequelize);
 
 // foreign key for session
 /*db.user.hasMany(

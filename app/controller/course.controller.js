@@ -17,8 +17,8 @@ exports.create = (req, res) => {
     published: req.body.published ? req.body.published : false,
     //userId: req.body.userId,
   };
-  // Save Course in the database
-  course.create(course)
+  // Save Tutorial in the database
+  Course.create(course)
     .then((data) => {
       res.send(data);
     })
@@ -33,7 +33,7 @@ exports.create = (req, res) => {
 exports.findAll = (req, res) => {
   const title = req.query.title;
   var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
-  course.findAll({ where: condition })
+  Course.findAll({ where: condition })
     .then((data) => {
       res.send(data);
     })
@@ -88,7 +88,7 @@ exports.findOne = (req, res) => {
 // Update a Course by the id in the request
 exports.update = (req, res) => {
   const id = req.params.id;
-  course.update(req.body, {
+  Course.update(req.body, {
     where: { id: id },
   })
     .then((num) => {
@@ -111,7 +111,7 @@ exports.update = (req, res) => {
 // Delete a Course with the specified id in the request
 exports.delete = (req, res) => {
   const id = req.params.id;
-  course.destroy({
+  Course.destroy({
     where: { id: id },
   })
     .then((num) => {
@@ -133,7 +133,7 @@ exports.delete = (req, res) => {
 };
 // Delete all Courses from the database.
 exports.deleteAll = (req, res) => {
-  course.destroy({
+  Course.destroy({
     where: {},
     truncate: false,
   })
