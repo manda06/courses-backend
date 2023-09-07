@@ -1,11 +1,11 @@
 module.exports = (sequelize, Sequelize) => {
     const Course = sequelize.define("course", {
-      title: {
+      name: {
         type: Sequelize.STRING
       },
-      /*number: {
+      number: {
         type: Sequelize.INTEGER
-      },*/
+      },
       description: {
         type: Sequelize.STRING
       },
