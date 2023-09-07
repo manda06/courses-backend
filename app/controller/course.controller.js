@@ -10,15 +10,15 @@ exports.create = (req, res) => {
     });
     return;
   }
+  // Create a Course
   const course = {
     title: req.body.title,
     description: req.body.description,
     published: req.body.published ? req.body.published : false,
     //userId: req.body.userId,
   };
-
-  // Save Course in the database
-  course.create(course)
+  // Save Tutorial in the database
+  Course.create(course)
     .then((data) => {
       res.send(data);
     })
@@ -33,9 +33,7 @@ exports.create = (req, res) => {
 exports.findAll = (req, res) => {
   const title = req.query.title;
   var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
-
- Course.findAll({ where: condition })
-
+  Course.findAll({ where: condition })
     .then((data) => {
       res.send(data);
     })
@@ -47,12 +45,31 @@ exports.findAll = (req, res) => {
     });
 };
 
-
-// Find a single Tutorial with an id
+// Find a single Course with an id
+/*exports.findAllForUser = (req, res) => {
+  const userId = req.params.userId;
+  course.findAll({ where: { userId: userId } })
+    .then((data) => {
+      if (data) {
+        res.send(data);
+      } else {
+        res.status(404).send({
+          message: `Cannot find courses for user with id=${userId}.`,
+        });
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message ||
+          "Error retrieving Courses for user with id=" + userId,
+      });
+    });
+};*/
+// Find a single Course with an id
 exports.findOne = (req, res) => {
   const id = req.params.id;
-  Course.findByPk(id)
-
+  course.findByPk(id)
     .then((data) => {
       if (data) {
         res.send(data);
@@ -71,9 +88,7 @@ exports.findOne = (req, res) => {
 // Update a Course by the id in the request
 exports.update = (req, res) => {
   const id = req.params.id;
-
   Course.update(req.body, {
-
     where: { id: id },
   })
     .then((num) => {
@@ -96,9 +111,7 @@ exports.update = (req, res) => {
 // Delete a Course with the specified id in the request
 exports.delete = (req, res) => {
   const id = req.params.id;
-
   Course.destroy({
-
     where: { id: id },
   })
     .then((num) => {
@@ -120,9 +133,7 @@ exports.delete = (req, res) => {
 };
 // Delete all Courses from the database.
 exports.deleteAll = (req, res) => {
-
   Course.destroy({
-
     where: {},
     truncate: false,
   })
