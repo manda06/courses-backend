@@ -18,7 +18,7 @@ exports.create = (req, res) => {
     //userId: req.body.userId,
   };
   // Save Tutorial in the database
-  Course.create(course)
+  course.create(course)
     .then((data) => {
       res.send(data);
     })
