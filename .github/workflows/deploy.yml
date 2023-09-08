@@ -43,7 +43,7 @@ jobs:
       - name: Execute SSH commmands on remote server
         uses: JimCronqvist/action-ssh@master
         env:
-          NAME: "Root"
+          NAME: "ubuntu"
         with:
           hosts: "ubuntu@project2.eaglesoftwareteam.com"
           privateKey: ${{ secrets.SERVER_SSH_KEY }}
