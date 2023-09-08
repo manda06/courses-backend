@@ -5,7 +5,7 @@ After=network.target
 [Service]
 Type=simple
 User=ubuntu
-WorkingDirectory=/home/ubuntu/nodeapps/course-t5-backend/
+WorkingDirectory=/home/ubuntu/nodeapps/2023/project2/t5/course-t5-backend/
 ExecStart=/usr/bin/npm run start
 Restart=on-failure
  
