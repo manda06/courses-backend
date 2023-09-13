@@ -117,7 +117,7 @@ exports.delete = (req, res) => {
     .then((num) => {
       if (num == 1) {
         res.send({
-          message: "COurse was deleted successfully!",
+          message: "Course was deleted successfully!",
         });
       } else {
         res.send({
