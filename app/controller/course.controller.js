@@ -6,7 +6,7 @@ exports.create = (req, res) => {
   // Validate request
   if (!req.body.title) {
     res.status(400).send({
-      message: "Content can not be empty!",
+      message: "Content can not be empty",
     });
     return;
   }
@@ -18,7 +18,7 @@ exports.create = (req, res) => {
     //userId: req.body.userId,
   };
   // Save Tutorial in the database
-  Course.create(course)
+  course.create(course)
     .then((data) => {
       res.send(data);
     })
